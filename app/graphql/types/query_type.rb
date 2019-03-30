@@ -13,5 +13,11 @@ module Types
     def task(id: nil)
       Task.where(id: id).first
     end
+
+    field :users, [UserType], null: false
+
+    def users
+      User.all
+    end
   end
 end
