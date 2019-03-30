@@ -3,8 +3,8 @@ class CreateTasks < ActiveRecord::Migration[5.2]
     create_table :tasks do |t|
       t.references :user, null: false
       t.string :name
-      t.date :due_date
-      t.date :done_at
+      t.datetime :due_date
+      t.datetime :done_at
 
       t.timestamps
     end
