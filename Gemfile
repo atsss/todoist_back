@@ -20,6 +20,7 @@ gem 'whiny_validation'
 
 group :development, :test do
   gem 'annotate'
+  gem 'dotenv-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
