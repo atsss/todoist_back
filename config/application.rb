@@ -47,5 +47,8 @@ module Server
       g.helper false
       g.jbuilder false
     end
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
   end
 end
