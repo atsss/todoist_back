@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(name: nil, due_date: nil)
       Task.create!(
-        user: User.first,
+        user: context[:current_user],
         name: name,
         due_date: due_date
       )
