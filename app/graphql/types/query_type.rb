@@ -3,7 +3,7 @@ module Types
     field :tasks, [TaskType], null: false
 
     def tasks
-      Task.all
+      Task.all.includes(:user)
     end
 
     field :task, TaskType, null: true do
@@ -17,7 +17,7 @@ module Types
     field :users, [UserType], null: false
 
     def users
-      User.all
+      User.all.includes(:tasks)
     end
   end
 end
