@@ -1,23 +1,7 @@
 module Types
   class QueryType < Types::BaseObject
-    field :tasks, [TaskType], null: false
-
-    def tasks
-      Task.all.includes(:user)
-    end
-
-    field :task, TaskType, null: true do
-      argument :id, ID, required: true
-    end
-
-    def task(id: nil)
-      Task.where(id: id).first
-    end
-
-    field :users, [UserType], null: false
-
-    def users
-      User.all.includes(:tasks)
-    end
+    field :tasks, resolver: Resolvers::Tasks
+    field :task, resolver: Resolvers::Task
+    field :users, resolver: Resolvers::Users
   end
 end
