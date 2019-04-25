@@ -4,7 +4,7 @@ module Mutations
     argument :name, String, required: false
     argument :due_date, GraphQL::Types::ISO8601DateTime, required: false
 
-    type Types::TaskType
+    type Types::Objects::TaskType
 
     def resolve(id: nil, name: nil, due_date: nil)
       task = Task.find(id)

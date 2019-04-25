@@ -1,6 +1,6 @@
 module Resolvers
   class Users < BaseResolver
-    type [Types::UserType], null: false
+    type [Types::Objects::UserType], null: false
 
     def resolve
       User.all.includes(:tasks)

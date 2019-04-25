@@ -2,7 +2,7 @@ module Mutations
   class DoneTask < BaseMutation
     argument :id, ID, required: true
 
-    type Types::TaskType
+    type Types::Objects::TaskType
 
     def resolve(id: nil)
       task = Task.find(id)

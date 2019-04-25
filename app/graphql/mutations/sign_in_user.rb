@@ -5,7 +5,7 @@ module Mutations
     argument :email, Types::InputObjects::AuthProviderEmail, required: false
 
     field :token, String, null: true
-    field :user, Types::UserType, null: true
+    field :user, Types::Objects::UserType, null: true
 
     def resolve(email: nil)
       return unless email
