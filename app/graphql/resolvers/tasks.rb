@@ -1,5 +1,5 @@
 module Resolvers
-  class Tasks < BaseResolver
+  class Tasks < Base
     type [Types::Objects::TaskType], null: false
 
     def resolve

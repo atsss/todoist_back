@@ -1,5 +1,5 @@
 module Mutations
-  class CreateTask < BaseMutation
+  class CreateTask < Base
     argument :name, String, required: true
     argument :due_date, GraphQL::Types::ISO8601DateTime, required: true
 

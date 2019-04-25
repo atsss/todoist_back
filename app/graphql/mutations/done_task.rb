@@ -1,5 +1,5 @@
 module Mutations
-  class DoneTask < BaseMutation
+  class DoneTask < Base
     argument :id, ID, required: true
 
     type Types::Objects::TaskType

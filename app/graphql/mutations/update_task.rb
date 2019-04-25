@@ -1,5 +1,5 @@
 module Mutations
-  class UpdateTask < BaseMutation
+  class UpdateTask < Base
     argument :id, ID, required: true
     argument :name, String, required: false
     argument :due_date, GraphQL::Types::ISO8601DateTime, required: false

@@ -1,5 +1,5 @@
 module Resolvers
-  class Users < BaseResolver
+  class Users < Base
     type [Types::Objects::UserType], null: false
 
     def resolve
