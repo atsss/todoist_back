@@ -2,7 +2,7 @@ module Mutations
   class SignInUser < BaseMutation
     null true
 
-    argument :email, Types::AuthProviderEmailInput, required: false
+    argument :email, Types::InputObjects::AuthProviderEmail, required: false
 
     field :token, String, null: true
     field :user, Types::UserType, null: true
