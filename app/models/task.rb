@@ -19,4 +19,10 @@ class Task < ApplicationRecord
   belongs_to :user
 
   validates :name, :due_date, presence: true
+
+  scope :not_done, -> { where(done_at: nil) }
+
+  def done!
+    update!(done_at: Time.current)
+  end
 end

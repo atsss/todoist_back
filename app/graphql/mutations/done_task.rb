@@ -6,7 +6,7 @@ module Mutations
 
     def resolve(id: nil)
       task = Task.find(id)
-      task.update!(done_at: Time.zone.now)
+      task.done!
 
       task
     end

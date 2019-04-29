@@ -3,7 +3,7 @@ module Resolvers
     type [Types::Objects::TaskType], null: false
 
     def resolve
-      ::Task.all.includes(:user)
+      ::Task.not_done.includes(:user)
     end
   end
 end
