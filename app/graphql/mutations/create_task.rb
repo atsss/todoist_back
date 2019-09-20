@@ -1,7 +1,7 @@
 module Mutations
   class CreateTask < Base
     argument :name, String, required: true
-    argument :due_date, GraphQL::Types::ISO8601DateTime, required: true
+    argument :due_date, Types::Scalars::DateTime, required: true
 
     type Types::Objects::TaskType
 
