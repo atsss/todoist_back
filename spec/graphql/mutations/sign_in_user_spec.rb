@@ -15,7 +15,7 @@ RSpec.describe Mutations::SignInUser, type: :graphql do
     end
 
     it do
-      expect(result[:token].present?).to be_truthy
+      expect(result[:token]).to be_present
       expect(result[:user]).to eq user
     end
   end

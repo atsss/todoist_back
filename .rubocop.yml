@@ -1,0 +1,198 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  UseCache: false
+  TargetRubyVersion: 2.6
+  Exclude:
+    - 'bin/*'
+    - 'circle/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - 'node_modules/**/*'
+    - 'public/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'lib/tasks/*.rake'
+    - 'lib/tasks/tmp/*'
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%':  '()'
+    '%i': '()'
+    '%q': '()'
+    '%Q': '()'
+    '%r': '{}'
+    '%s': '()'
+    '%w': '()'
+    '%W': '()'
+    '%x': '()'
+
+#
+# Lint
+#
+
+# Rails っぽい書き方ではないので無効にする
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+#
+# Layout
+#
+
+# ! の後に space があったほうが見やすいことが多い
+Layout/SpaceAfterNot:
+  Enabled: false
+
+# diff がみやすくなるので
+Layout/MultilineArrayBraceLayout:
+  Enabled: false
+
+# diff がみやすくなるので
+Layout/MultilineHashBraceLayout:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+  # .to〜.and の chain を期待する通りに解析できないので除外
+  Exclude:
+    - 'spec/**/*'
+
+# 強制したくないケースが多い（# 前のスペース数など）
+Layout/ExtraSpacing:
+  Enabled: false
+
+#
+# Style
+#
+
+# 日本語のコメントを検出しない
+Style/AsciiComments:
+  Enabled: false
+
+# 現時点では対応しない
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# diff が見やすくなることがある
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+# diff が見やすくなることがある
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+# diff が見やすくなることがある
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+# !! のほうが読みやすい
+Style/DoubleNegation:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+# error になるケースがある
+Style/RaiseArgs:
+  Enabled: false
+
+# 後置if/unlessだとサービス層わかりにくい場合がある(saveなど)
+Style/IfUnlessModifier:
+  Exclude:
+    - 'app/services/**/*'
+
+# 気にするほどのことではない
+Style/MultilineBlockChain:
+  Enabled: false
+
+# 見やすくならない
+Style/NumericPredicate:
+  Enabled: false
+
+Style/Semicolon:
+  Enabled: false
+
+#
+# Metrics
+#
+
+# 100 ぐらいにしたいが修正おおいので、しばらく 200 にする
+Metrics/LineLength:
+  Max: 230
+  Exclude:
+    - 'config/**/*'
+
+Metrics/MethodLength:
+  Max: 60
+  Exclude:
+    - 'lib/**/*'
+
+# ExcludedMethods: refine, concerning
+Metrics/BlockLength:
+  Max: 86
+  Exclude:
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'lib/**/*'
+
+#
+# Naming
+#
+
+# 強制したくないケースも多い
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+#
+# Rails
+#
+Rails:
+  Enabled: true
+
+# 日本人だとそんなに気にならない
+Rails/PluralizationGrammar:
+  Enabled: false
+
+Rails/Date:
+  Exclude:
+    - 'config/**/*.rb'
+
+Rails/Delegate:
+  Include:
+    - 'app/models/**/*'
+
+# Raiis/InverseOf が適切なチェックをしているか不安なので無視
+# https://sil.hatenablog.com/entry/rubocop-rails-inverse-of
+Rails/InverseOf:
+  Enabled: false
+
+# update_column など積極的に使う
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# context の記述は日本語なので無視
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/graphql/**/*'
+    - 'spec/services/**/*'
+
+inherit_from: .rubocop_todo.yml

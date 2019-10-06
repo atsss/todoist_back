@@ -1,0 +1,9 @@
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/graphql_controller.rb'

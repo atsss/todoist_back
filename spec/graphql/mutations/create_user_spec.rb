@@ -15,7 +15,7 @@ RSpec.describe Mutations::CreateUser, type: :graphql do
   end
 
   it 'success' do
-    expect(result.persisted?).to be_truthy
+    expect(result).to be_persisted
     expect(result.name).to eq 'Test User'
     expect(result.email).to eq 'email@example.com'
   end
