@@ -5,6 +5,8 @@ ruby '2.6.1'
 
 gem 'bcrypt'
 gem 'bootsnap', require: false
+gem 'devise'
+gem 'devise_token_auth'
 gem 'mysql2'
 gem 'puma'
 gem 'rack-cors'
