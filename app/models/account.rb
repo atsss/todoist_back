@@ -23,7 +23,6 @@
 #  index_accounts_on_uid_and_provider  (uid,provider) UNIQUE
 #
 
-
 class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
