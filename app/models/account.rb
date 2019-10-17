@@ -23,7 +23,10 @@
 #
 
 class Account < ApplicationRecord
+  include DeviseTokenAuth::Concerns::User
+
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
-  include DeviseTokenAuth::Concerns::User
+
+  belongs_to :user
 end
