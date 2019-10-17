@@ -1,10 +1,11 @@
 class GraphqlController < ApplicationController
+  before_action :authenticate_account!
+
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      session: session,
       current_user: current_user
     }
     result = ServerSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
