@@ -7,7 +7,6 @@
 #  id                  :bigint           not null, primary key
 #  provider            :string(255)      default("email"), not null
 #  uid                 :string(255)      default(""), not null
-#  user_id             :bigint           not null
 #  encrypted_password  :string(255)      default(""), not null
 #  remember_created_at :datetime
 #  email               :string(255)
@@ -19,7 +18,6 @@
 #
 #  index_accounts_on_email             (email) UNIQUE
 #  index_accounts_on_uid_and_provider  (uid,provider) UNIQUE
-#  index_accounts_on_user_id           (user_id)
 #
 
 class Account < ApplicationRecord

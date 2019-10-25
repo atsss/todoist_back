@@ -5,8 +5,9 @@
 #  id         :bigint           not null, primary key
 #  user_id    :bigint           not null
 #  name       :string(255)
-#  due_date   :datetime
-#  done_at    :datetime
+#  kind       :string(255)
+#  hour       :integer
+#  minute     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
