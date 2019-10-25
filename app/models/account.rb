@@ -26,5 +26,5 @@ class Account < ApplicationRecord
 
   include DeviseTokenAuth::Concerns::User
 
-  belongs_to :user
+  has_one :user, dependent: :destroy
 end

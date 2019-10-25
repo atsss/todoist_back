@@ -14,7 +14,7 @@
 #
 
 class User < ApplicationRecord
-  has_one :account, dependent: :destroy
+  belongs_to :account
   has_many :tasks, dependent: :destroy
 
   validates :name, presence: true
