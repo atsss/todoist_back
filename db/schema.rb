@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_030032) do
+ActiveRecord::Schema.define(version: 2019_10_28_105326) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2019_10_25_030032) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["uid", "provider"], name: "index_accounts_on_uid_and_provider", unique: true
+  end
+
+  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "done_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_results_on_tag_id"
   end
 
   create_table "tag_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
