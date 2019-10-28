@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_105326) do
     t.string "kind"
     t.integer "hour"
     t.integer "minute"
+    t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"

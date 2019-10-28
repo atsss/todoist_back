@@ -8,6 +8,7 @@
 #  kind       :string(255)
 #  hour       :integer
 #  minute     :integer
+#  duration   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  deleted_at :datetime
@@ -27,9 +28,10 @@ class Task < ApplicationRecord
   has_many :tags, through: :tag_tasks
   has_many :results, dependent: :destroy
 
-  validates :name, :kind, :hour, :minute, presence: true
-  validates :hour, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 24 }
-  validates :minute, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 60 }
+  validates :name, :kind, :hour, :minute, :duration, presence: true
+  validates :hour, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 24 }
+  validates :minute, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 59 }
+  validates :duration, numericality: { greater_than_or_equal_to: 0 }
 
   enumerize :kind,
             in: %w(weekday weekend monday tuesday wednesday thursday friday saturday sunday),

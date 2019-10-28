@@ -7,6 +7,7 @@ class FixTasksColumns < ActiveRecord::Migration[6.0]
     add_column :tasks, :kind, :string, after: :name
     add_column :tasks, :hour, :integer, after: :kind
     add_column :tasks, :minute, :integer, after: :hour
+    add_column :tasks, :duration, :integer, after: :minute
     add_column :tasks, :deleted_at, :datetime, after: :updated_at
     add_index :tasks, :deleted_at
     add_reference :users, :account, null: false, index: true, after: :id
