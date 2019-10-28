@@ -7,5 +7,7 @@ class CreateTags < ActiveRecord::Migration[6.0]
 
       t.datetime :deleted_at
     end
+
+    add_index :tags, :deleted_at
   end
 end

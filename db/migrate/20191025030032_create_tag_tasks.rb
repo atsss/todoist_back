@@ -9,6 +9,7 @@ class CreateTagTasks < ActiveRecord::Migration[6.0]
       t.datetime :deleted_at
     end
 
+    add_index :tag_tasks, :deleted_at
     add_index :tag_tasks, %i(tag_id task_id), unique: true
   end
 end

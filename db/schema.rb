@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_030032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_tag_tasks_on_deleted_at"
     t.index ["tag_id", "task_id"], name: "index_tag_tasks_on_tag_id_and_task_id", unique: true
     t.index ["tag_id"], name: "index_tag_tasks_on_tag_id"
     t.index ["task_id"], name: "index_tag_tasks_on_task_id"
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_030032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_tags_on_deleted_at"
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

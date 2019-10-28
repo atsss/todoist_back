@@ -8,6 +8,10 @@
 #  updated_at :datetime         not null
 #  deleted_at :datetime
 #
+# Indexes
+#
+#  index_tags_on_deleted_at  (deleted_at)
+#
 
 class Tag < ApplicationRecord
   has_many :tag_tasks, dependent: :destroy

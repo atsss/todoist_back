@@ -11,6 +11,7 @@
 #
 # Indexes
 #
+#  index_tag_tasks_on_deleted_at          (deleted_at)
 #  index_tag_tasks_on_tag_id              (tag_id)
 #  index_tag_tasks_on_tag_id_and_task_id  (tag_id,task_id) UNIQUE
 #  index_tag_tasks_on_task_id             (task_id)
