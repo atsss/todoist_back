@@ -16,4 +16,6 @@
 
 class Result < ApplicationRecord
   belongs_to :tag
+
+  validates :score, presence: true
 end

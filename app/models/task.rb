@@ -22,6 +22,7 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :tag_tasks, dependent: :destroy
   has_many :tags, through: :tag_tasks
+  has_many :results, dependent: :destroy
 
-  validates :name, :due_date, presence: true
+  validates :name, :kind, :hour, :minute, presence: true
 end
