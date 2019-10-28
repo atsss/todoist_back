@@ -19,6 +19,8 @@
 #
 
 class Task < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :user
   has_many :tag_tasks, dependent: :destroy
   has_many :tags, through: :tag_tasks
