@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_112331) do
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "task_id", null: false
-    t.integer "kind"
+    t.string "kind"
     t.integer "hour"
     t.integer "minute"
     t.datetime "created_at", precision: 6, null: false

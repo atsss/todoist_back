@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  task_id    :bigint           not null
-#  kind       :integer
+#  kind       :string(255)
 #  hour       :integer
 #  minute     :integer
 #  created_at :datetime         not null
