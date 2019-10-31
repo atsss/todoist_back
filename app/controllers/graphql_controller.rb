@@ -1,5 +1,5 @@
 class GraphqlController < ApplicationController
-  before_action :authenticate_account!
+  before_action :authenticate_account!, unless: :graphiql?
 
   def execute
     variables = ensure_hash(params[:variables])
@@ -19,7 +19,11 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    current_account.user
+    graphiql? ? User.first : current_account.user
+  end
+
+  def graphiql?
+    request.host == 'localhost' && request.path == '/graphql'
   end
 
   # Handle form data, JSON body, or a blank value
