@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 2019_10_31_112331) do
   end
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "tag_id", null: false
+    t.bigint "task_id", null: false
     t.integer "score", default: 0, null: false
     t.datetime "done_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["tag_id"], name: "index_results_on_tag_id"
+    t.index ["task_id"], name: "index_results_on_task_id"
   end
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

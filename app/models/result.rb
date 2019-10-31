@@ -3,7 +3,7 @@
 # Table name: results
 #
 #  id         :bigint           not null, primary key
-#  tag_id     :bigint           not null
+#  task_id    :bigint           not null
 #  score      :integer          default(0), not null
 #  done_at    :datetime
 #  created_at :datetime         not null
@@ -11,7 +11,7 @@
 #
 # Indexes
 #
-#  index_results_on_tag_id  (tag_id)
+#  index_results_on_task_id  (task_id)
 #
 
 class Result < ApplicationRecord
