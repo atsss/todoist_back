@@ -5,8 +5,10 @@ module Resolvers
     def resolve
       ::Task
         .where(user: context[:current_user])
+        .for_today
         .not_done
-        .includes(:user)
+        .order_by_time
+        .includes(:user, :schedule, :schedules, :tags)
     end
   end
 end
