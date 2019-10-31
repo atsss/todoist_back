@@ -33,5 +33,5 @@ class Task < ApplicationRecord
 
   scope :for_today, -> { joins(:schedules).where(schedules: { kind: Schedule.todays_kinds }) }
   scope :not_done, -> { left_outer_joins(:todays_result).where(results: { id: nil }) }
-  scope :time_order, -> { joins(:schedules).merge(Schedule.order(:hour, :minute)) }
+  scope :order_by_time, -> { joins(:schedules).merge(Schedule.order(:hour, :minute)) }
 end
