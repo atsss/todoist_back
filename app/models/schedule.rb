@@ -32,4 +32,27 @@ class Schedule < ApplicationRecord
             predicates: true,
             scope: true,
             default: 'everyday'
+
+  class << self
+    def todays_kinds
+      kinds = [:everyday]
+
+      case Time.current.wday
+      when 0
+        kinds.concat(%i(weekend sunday))
+      when 1
+        kinds.concat(%i(weekday monday))
+      when 2
+        kinds.concat(%i(weekday tuesday))
+      when 3
+        kinds.concat(%i(weekday wednesday))
+      when 4
+        kinds.concat(%i(weekday thursday))
+      when 5
+        kinds.concat(%i(weekday friday))
+      when 6
+        kinds.concat(%i(weekend saturday))
+      end
+    end
+  end
 end
