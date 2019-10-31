@@ -20,9 +20,11 @@ class Task < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :user
-  has_many :schedules, dependent: :destroy
   has_many :tag_tasks, dependent: :destroy
   has_many :tags, through: :tag_tasks
+  has_many :schedules, dependent: :destroy
+  has_one :schedule,
+          -> { merge(Schedule.for_today) }
   has_many :results, dependent: :destroy
   has_one :todays_result,
           -> { merge(Result.for_today) },
@@ -31,7 +33,7 @@ class Task < ApplicationRecord
   validates :name, :duration, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: 0 }
 
-  scope :for_today, -> { joins(:schedules).where(schedules: { kind: Schedule.todays_kinds }) }
+  scope :for_today, -> { joins(:schedules).merge(Schedule.for_today) }
   scope :not_done, -> { left_outer_joins(:todays_result).where(results: { id: nil }) }
   scope :order_by_time, -> { joins(:schedules).merge(Schedule.order(:hour, :minute)) }
 end

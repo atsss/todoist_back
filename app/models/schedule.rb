@@ -33,6 +33,8 @@ class Schedule < ApplicationRecord
             scope: true,
             default: 'everyday'
 
+  scope :for_today, -> { where(kind: todays_kinds) }
+
   class << self
     def todays_kinds
       kinds = [:everyday]
