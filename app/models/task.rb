@@ -24,11 +24,14 @@ class Task < ApplicationRecord
   has_many :tag_tasks, dependent: :destroy
   has_many :tags, through: :tag_tasks
   has_many :results, dependent: :destroy
+  has_one :todays_result,
+          -> { merge(Result.for_today) },
+          class_name: 'Result'
 
   validates :name, :duration, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: 0 }
 
   scope :for_today, -> { joins(:schedules).where(schedules: { kind: Schedule.todays_kinds }) }
-  scope :not_done, -> { left_outer_joins(:results).where(results: { id: nil }) }
+  scope :not_done, -> { left_outer_joins(:todays_result).where(results: { id: nil }) }
   scope :time_order, -> { joins(:schedules).merge(Schedule.order(:hour, :minute)) }
 end

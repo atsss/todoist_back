@@ -15,7 +15,16 @@
 #
 
 class Result < ApplicationRecord
-  belongs_to :tag
+  belongs_to :task
 
   validates :score, presence: true
+
+  scope :for_today, -> do
+    where('done_at > ?', Time.current.beginning_of_day)
+      .where('done_at < ?', Time.current.end_of_day)
+  end
+
+  def done!
+    update!(done_at: Time.current)
+  end
 end
