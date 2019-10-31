@@ -112,3 +112,11 @@ set Task do
     end
   end
 end
+
+set Result do
+  one = User.last.tasks.first
+  two = User.last.tasks.second
+
+  add task: one, score: 8, done_at: Time.current
+  add task: two, score: 8, done_at: Time.current - 1.day
+end
