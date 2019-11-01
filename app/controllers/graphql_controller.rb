@@ -23,7 +23,7 @@ class GraphqlController < ApplicationController
   end
 
   def graphiql?
-    request.host == 'localhost' && request.path == '/graphql'
+    request.referer.match?(/graphiql/)
   end
 
   # Handle form data, JSON body, or a blank value
