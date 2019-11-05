@@ -4,7 +4,7 @@ module Resolvers
 
     def resolve
       ::Task
-        .where(user: context[:current_user])
+        .where(user: current_user)
         .for_today
         .not_done
         .order_by_time
