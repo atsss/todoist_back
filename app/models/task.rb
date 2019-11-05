@@ -36,4 +36,11 @@ class Task < ApplicationRecord
   scope :for_today, -> { joins(:schedules).merge(Schedule.for_today) }
   scope :not_done, -> { left_outer_joins(:todays_result).where(results: { id: nil }) }
   scope :order_by_time, -> { joins(:schedules).merge(Schedule.order(:hour, :minute)) }
+
+  def done!(score: nil)
+    ActiveRecord::Base.transaction do
+      result = results.create!(score: score)
+      result.done!
+    end
+  end
 end
