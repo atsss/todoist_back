@@ -7,6 +7,7 @@ RSpec/FilePath:
 Metrics/AbcSize:
   Exclude:
     - 'app/controllers/graphql_controller.rb'
+    - 'lib/batch/base.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
