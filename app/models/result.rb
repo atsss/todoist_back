@@ -21,7 +21,11 @@ class Result < ApplicationRecord
 
   scope :for_today, -> do
     where('done_at > ?', Time.current.beginning_of_day)
-      .where('done_at < ?', Time.current.end_of_day)
+      .where('done_at <= ?', Time.current.end_of_day)
+  end
+  scope :for_yesterday, -> do
+    where('done_at > ?', Time.current.yesterday.beginning_of_day)
+      .where('done_at <= ?', Time.current.yesterday.end_of_day)
   end
 
   def done!

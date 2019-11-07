@@ -29,12 +29,16 @@ class Task < ApplicationRecord
   has_one :todays_result,
           -> { merge(Result.for_today) },
           class_name: 'Result'
+  has_one :yesterdays_result,
+          -> { merge(Result.for_yesterday) },
+          class_name: 'Result'
 
   validates :name, :duration, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: 0 }
 
   scope :for_today, -> { joins(:schedules).merge(Schedule.for_today) }
   scope :not_done, -> { left_outer_joins(:todays_result).where(results: { id: nil }) }
+  scope :overtime, -> { left_outer_joins(:yesterdays_result).where(results: { id: nil }) }
   scope :order_by_time, -> { joins(:schedules).merge(Schedule.order(:hour, :minute)) }
 
   def done!(score: nil)
