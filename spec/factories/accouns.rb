@@ -5,7 +5,6 @@
 #  id                  :bigint           not null, primary key
 #  provider            :string(255)      default("email"), not null
 #  uid                 :string(255)      default(""), not null
-#  user_id             :bigint           not null
 #  encrypted_password  :string(255)      default(""), not null
 #  remember_created_at :datetime
 #  email               :string(255)
@@ -22,7 +21,6 @@
 
 FactoryBot.define do
   factory :account, class: 'Account' do
-    user
     email { Faker::Internet.email }
     password { 'passpass' }
   end

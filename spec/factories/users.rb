@@ -15,6 +15,7 @@
 
 FactoryBot.define do
   factory :user, class: 'User' do
+    account
     name { Faker::Name.name }
   end
 end

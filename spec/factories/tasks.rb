@@ -20,6 +20,6 @@ FactoryBot.define do
   factory :task, class: 'Task' do
     user
     name { Faker::Name.name }
-    due_date { Faker::Time.between(from: DateTime.now, to: DateTime.now + 1.week) }
+    duration { 8 }
   end
 end
