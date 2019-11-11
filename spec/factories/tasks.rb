@@ -21,5 +21,9 @@ FactoryBot.define do
     user
     name { Faker::Name.name }
     duration { 8 }
+
+    trait :with_schedule do
+      after(:create) { |task, _evaluator| create(:schedule, task: task) }
+    end
   end
 end
