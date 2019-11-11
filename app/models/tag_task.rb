@@ -23,5 +23,5 @@ class TagTask < ApplicationRecord
   belongs_to :tag
   belongs_to :task
 
-  validates :task_id, uniqueness: { scope: %i(tag_id) }
+  validates :task_id, uniqueness: { scope: %i(tag_id), case_sensitive: true }
 end
