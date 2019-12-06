@@ -1,4 +1,4 @@
-name: Ruby
+name: Ruby on Rails
 
 on: [push]
 
@@ -7,14 +7,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: circleci/mysql:5.6
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+
+    container:
+      image: circleci/ruby:2.6.1-node-browsers
+      env:
+        BUNDLE_APP_CONFIG: ./.bundle/
+        TZ: /usr/share/zoneinfo/Asia/Tokyo
+
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.1
-    - name: Build and test with Rake
+    - name: Build and setup
       run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec rake
+        bundle install --clean --jobs 16 --path ./vendor/bundle/ --retry 3 --with pam_authentication --without development production && bundle clean
+        bundle exec rake db:create db:schema:load
+        bundle exec rspec spec --format progress
